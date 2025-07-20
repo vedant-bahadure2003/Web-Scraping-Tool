@@ -8,7 +8,7 @@ export async function scrapeCompanyData(
   try {
     const urlObj = new URL(url);
 
-    const browser = await puppeteer.launch({ headless: "new" }); // use 'new' for modern Puppeteer headless mode
+    const browser = await puppeteer.launch({ headless: true }); // use 'new' for modern Puppeteer headless mode
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
 
@@ -139,26 +139,23 @@ export async function checkUrlReachability(url: string): Promise<boolean> {
   }
 }
 
-
-
-
 // import { CompanyData } from '@/types/scraping';
 
 // export async function scrapeCompanyData(url: string, extractionLevel: number = 2): Promise<CompanyData | null> {
 //   try {
 //     // Validate URL
 //     const urlObj = new URL(url);
-    
+
 //     // In a real implementation, you would:
 //     // 1. Use puppeteer/playwright for dynamic content
 //     // 2. Parse HTML with cheerio
 //     // 3. Extract structured data
 //     // 4. Handle different page layouts
 //     // 5. Implement error handling and retries
-    
+
 //     // For demo purposes, generate realistic mock data
 //     const companyData = await generateMockCompanyData(url, extractionLevel);
-    
+
 //     return companyData;
 //   } catch (error) {
 //     console.error(`Error scraping ${url}:`, error);
@@ -170,7 +167,7 @@ export async function checkUrlReachability(url: string): Promise<boolean> {
 //   // Extract domain name for company name
 //   const domain = new URL(url).hostname.replace('www.', '');
 //   const companyName = domain.split('.')[0];
-  
+
 //   const companies = {
 //     'stripe': {
 //       name: 'Stripe',
@@ -255,7 +252,7 @@ export async function checkUrlReachability(url: string): Promise<boolean> {
 //     baseData.location = companyInfo.location;
 //     baseData.foundedYear = companyInfo.foundedYear;
 //     baseData.employeeSize = companyInfo.employeeSize;
-    
+
 //     baseData.socialMedia = {
 //       linkedin: `https://linkedin.com/company/${companyName}`,
 //       twitter: `https://twitter.com/${companyName}`
